@@ -1,3 +1,9 @@
 body {
-    background-color: skyblue;
+    
+}
+.login-form{
+    width:400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 200px;
 }
