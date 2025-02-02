@@ -1,0 +1,31 @@
+<div id="dynamic-content"><div class="recentOrders">
+    <div class="cardHeader">
+        <h2>Recent Appointments</h2>
+        <a href="{{ path('app_appointment_index') }}" class="btn">View All</a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Client</th>
+                <th>Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for appointment in appointments %}
+                <tr>
+                    <td>{{ appointment.id }}</td>
+                    <td>{{ appointment.client }}</td>
+                    <td>{{ appointment.date | date('Y-m-d') }}</td>
+                    <td>{{ appointment.status }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">No appointments found</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>

@@ -13,12 +13,15 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
+        
         main:
             lazy: true
             provider: app_user_provider
             custom_authenticator: App\Security\UserAthenticatorAuthenticator
             logout:
                 path: app_logout
+                target: app_login # Redirige vers la page de connexion après déconnexion
+                
 
             remember_me:
                 secret: '%kernel.secret%'
@@ -26,8 +29,17 @@ security:
                 path: /
 
     access_control:
-        - { path: ^/admin, roles: ROLE_ADMIN }
-        - { path: ^/profile, roles: ROLE_USER }
+    # Empêche les admins d'accéder à la page d'accueil
+    # - { path: ^/$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+
+    # Permet uniquement aux admins d'accéder au tableau de bord admin
+    - { path: ^/admin/dashboard, roles: ROLE_ADMIN }
+
+    # Permet aux utilisateurs classiques d'accéder à la page d'accueil ou d'autres pages
+    - { path: ^/profile, roles: ROLE_USER }
+    - { path: ^/appointment, roles: ROLE_USER }
+
+
 
 when@test:
     security:

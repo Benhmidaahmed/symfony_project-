@@ -1,0 +1,48 @@
+ <div class="navigation">
+        <ul>
+            <li>
+                <a href="#">
+                    <span class="icon">
+                        <i class="fa fa-deaf me-3"></i>
+                    </span>
+                    <span class="title">Solutions Auditives</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ path('app_admin_dashboard') }}">
+                    <span class="icon">
+                        <ion-icon name="home-outline"></ion-icon>
+                    </span>
+                    <span class="title">Tableau de Bord</span>
+                </a>
+            </li>
+
+            <!-- Nouveau lien vers la Liste des Rendez-vous -->
+            <li>
+                <a href="{{ path('app_appointment_index') }}">
+                    <span class="icon">
+                        <ion-icon name="calendar-outline"></ion-icon>
+                    </span>
+                    <span class="title">Liste des Rendez-vous</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ path('app_appointment_new') }}" id="appointments">
+                    <span class="icon">
+                        <ion-icon name="chatbubble-outline"></ion-icon>
+                    </span>
+                    <span class="title">Créer un Rendez-vous</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ path('app_logout') }}">
+                    <span class="icon">
+                        <ion-icon name="log-out-outline"></ion-icon>
+                    </span>
+                    <span class="title">Déconnexion</span>
+                </a>
+            </li>
+        </ul>
+    </div>

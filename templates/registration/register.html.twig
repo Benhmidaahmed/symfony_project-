@@ -3,20 +3,25 @@
 {% block title %}Register{% endblock %}
 
 {% block navbar %}{% endblock %}
+{% block carousel %}{% endblock %}
 
 {% block body %}
-<div class="login-form container mt-5">
+<div class="login-form1">
+
     {% for flash_error in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">
             {{ flash_error }}
         </div>
     {% endfor %}
 
-    <h1 class="mb-4">Register</h1>
+    <h1 class="mb-4 text-center">Register</h1>
 
     {{ form_errors(registrationForm) }}
 
     {{ form_start(registrationForm) }}
+     <div class="form-group mb-3">
+            {{ form_row(registrationForm.cin, {'attr': {'class': 'form-control', 'placeholder': 'Enter your CIN'}}) }}
+        </div>
         <div class="form-group mb-3">
             {{ form_row(registrationForm.email, {'attr': {'class': 'form-control', 'placeholder': 'Enter your email'}}) }}
         </div>
@@ -33,12 +38,14 @@
             }) }}
         </div>
         <div class="form-group mb-3">
-            {{ form_row(registrationForm.agreeTerms, {'attr': {'class': 'form-check-input'}}) }} 
+            {{ form_row(registrationForm.agreeTerms, {'attr': {'class': 'form-check-input'}}) }}
         </div>
 
         <button type="submit" class="btn btn-primary btn-block">Register</button>
+        <a href="{{ path('app_login') }}" class="btn btn-secondary btn-block">Sign in</a>
     {{ form_end(registrationForm) }}
 </div>
+
 {% endblock %}
 
 {% block footer %}{% endblock %}

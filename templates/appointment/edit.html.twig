@@ -1,13 +1,13 @@
-<!DOCTYPE html>
-
-<title>Edit Appointment</title>
+{% extends layout %}
 
 {% block body %}
-    <h1>Edit Appointment</h1>
+<div class="container">
+     {# <h1>Modifier votre rendez-vous</h1> #}
+    {{ include('appointment/_form.html.twig', {'button_label': 'Modifier'}) }}
 
-    {{ include('appointment/_form.html.twig', {'button_label': 'Update'}) }}
+    {# <a href="{{ path('app_appointment_index') }}#liste"class="btn btn-secondary ">
+            <i class="fas fa-arrow-left"></i>Retour </a> #}
 
-    <a href="{{ path('app_appointment_index') }}">back to list</a>
-
-    {{ include('appointment/_delete_form.html.twig') }}
+    {# {{ include('appointment/_delete_form.html.twig') }} #}
+    </div>
 {% endblock %}

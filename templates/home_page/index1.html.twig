@@ -1,8 +1,74 @@
 {% extends 'Layout/base.html.twig' %}
 
 {% block title %}Cabinet d'Audiologie et d'Audioprothèse{% endblock %}
+{% block navbar %}{% endblock navbar %}
+{% block carousel %}{% endblock carousel %}
 
 {% block body %}
+<nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+    <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+        <h2 class="m-0 text-primary"><i class="fa fa-deaf me-3"></i>Solutions Auditives</h2>
+    </a>
+    <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+            <a href="{{ path('app_home_page') }}" class="nav-item nav-link active">Accueil</a>
+           <a href="{{ path('app_home_page') }}#about" class="nav-item nav-link">À propos</a>
+            <a href="{{ path('app_home_page') }}#services" class="nav-item nav-link">Services</a>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                <div class="dropdown-menu fade-down m-0">
+                    <a href="{{ path('app_appointment_new') }}" class="dropdown-item">Prendre Rendez-vous</a>
+                    <a href="{{ path('app_appointment_index') }}" class="dropdown-item">Calendrier</a>
+                    {# <a href="404.html" class="dropdown-item">Page 404</a> #}
+                </div>
+            </div>
+            <a href="{{ path('app_home_page') }}#solutions" class="nav-item nav-link">Solutions</a>
+        </div>
+        <a href="{{ path('app_logout') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
+            Connexion <i class="fa fa-arrow-right ms-3"></i>
+        </a>
+    </div>
+</nav>
+<div class="container-fluid p-0 mb-5">
+    <div class="owl-carousel header-carousel position-relative">
+        <div class="owl-carousel-item position-relative">
+            <img class="img-fluid" src="{{ asset('assets/user/img/molka.jpg') }}" alt="Cabinet d'Audiologie">
+            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(24, 29, 56, .7);">
+                <div class="container">
+                    <div class="row justify-content-start">
+                        <div class="col-sm-10 col-lg-8">
+                            <h5 class="text-primary text-uppercase mb-3 animated slideInDown">Votre Audition, Notre Priorité</h5>
+                            <h1 class="display-3 text-white animated slideInDown">Bienvenue au Cabinet d'Audiologie</h1>
+                            <p class="fs-5 text-white mb-4 pb-2">Nous offrons des services complets pour évaluer et améliorer votre audition, avec des solutions personnalisées pour chaque patient.</p>
+                            <a href="#services" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Nos Services</a>
+                            <a href="{{ path('app_appointment_new') }}" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Prendre Rendez-vous</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="owl-carousel-item position-relative">
+            <img class="img-fluid" src="{{ asset('assets/user/img/appareil1.jpg') }}" alt="Appareils Auditifs">
+            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(24, 29, 56, .7);">
+                <div class="container">
+                    <div class="row justify-content-start">
+                        <div class="col-sm-10 col-lg-8">
+                            <h5 class="text-primary text-uppercase mb-3 animated slideInDown">Des Solutions Adaptées</h5>
+                            <h1 class="display-3 text-white animated slideInDown">Appareils Auditifs Sur Mesure</h1>
+                            <p class="fs-5 text-white mb-4 pb-2">Découvrez notre gamme d'appareils auditifs et d'implants cochléaires pour retrouver une qualité de vie optimale.</p>
+                            <a href="#services" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">En Savoir Plus</a>
+                            <a href="#contact" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Nous Contacter</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Carousel Start -->
 {# <div class="container-fluid p-0 mb-5">
     <div class="owl-carousel header-carousel position-relative">
@@ -209,5 +275,85 @@
     </div>
 </div>
 <!-- Testimonial End -->
+<!-- Début du pied de page -->
+<div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-3 col-md-6">
+                <h4 class="text-white mb-3">Liens rapides</h4>
+                <a class="btn btn-link" href="#about">À propos de nous</a>
+                <a class="btn btn-link" href="{{ path('app_appointment_new') }}">Prendre Rendez-vous</a>
+                <a class="btn btn-link" href="#solustion">Solutions</a>
+                <a class="btn btn-link" href="{{ path('app_appointment_index') }}">Calendrier</a>
+                <a class="btn btn-link" href="#services">Services</a>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h4 class="text-white mb-3">Contact</h4>
+                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Bizerte Center Tower, Rue Mohamed Ali,  Tunisia</p>
+                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+216 50 839 965</p>
+                <p class="mb-2"><i class="fa fa-envelope me-3"></i>molkahouiji42@gmail.com</p>
+                <div class="d-flex pt-2">
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-light btn-social" href="https://www.facebook.com/profile.php?id=61565383931692&locale=fr_FR"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h4 class="text-white mb-3">Galerie</h4>
+                <div class="row g-2 pt-2">
+                    <div class="col-4">
+                        <img class="img-fluid bg-light p-1" src="{{ asset('assets/user/img/appareil1.jpg') }}" alt=""style="height: 50px; object-fit: cover;width:70px;">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid bg-light p-1" src="{{ asset('assets/user/img/molka.jpg') }}" alt=""style="height: 50px; object-fit: cover;width:70px;">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid bg-light p-1" src="{{ asset('assets/user/img/appareils.jpg') }}" alt=""style="height: 50px; object-fit: cover;width:70px;">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid bg-light p-1" src="{{ asset('assets/user/img/cabinet.jpg') }}" alt=""style="height: 50px; object-fit: cover;width:70px;">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid bg-light p-1" src="{{ asset('assets/user/img/locale3.jpg') }}" alt=""style="height: 50px; object-fit: cover;width:70px;">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid bg-light p-1" src="{{ asset('assets/user/img/ORL.jpg') }}" alt=""style="height: 50px; object-fit: cover;width:70px;">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h4 class="text-white mb-3">Newsletter</h4>
+                <p>Recevez nos dernières actualités et mises à jour.</p>
+                <div class="position-relative mx-auto" style="max-width: 400px;">
+                    <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Votre email">
+                    <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">S'inscrire</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container text-center">
+        <div class="copyright">
+            <div class="row">
+                <div class="text-center text-md-start mb-3 mb-md-0">
+                    &copy; <a class="border-bottom" href="">Solutions Auditives</a>, Tous droits réservés.
+                    {# <br> #}
+                    Créé par <a class="border-bottom" href="https://www.linkedin.com/in/ahmed-ben-hmida-091373295/">Benhmida Ahmed</a>
+                </div>
+                {# <div class="col-md-6 text-center text-md-end">
+                    <div class="footer-menu">
+                        <a href="">Accueil</a>
+                        <a href="">Cookies</a>
+                        <a href="">Aide</a>
+                        <a href="">FAQ</a>
+                    </div>
+                </div> #}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Fin du pied de page -->
+
 
 {% endblock %}
+{% block footer %}{% endblock footer %}

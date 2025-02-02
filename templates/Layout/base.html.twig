@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Cabinet d'Audiologie et d'Audioprothèse{% endblock %}</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
@@ -20,39 +20,52 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
         <!-- Libraries Stylesheet -->
-        <link href="lib/animate/animate.min.css" rel="stylesheet">
-        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="{{ asset('assets/user/lib/animate/animate.min.css')}}" rel="stylesheet">
+        <link href="{{ asset('assets/user/lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
 
         <!-- Customized Bootstrap Stylesheet -->
-        <link href="{{ asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
+        <link href="{{ asset('assets/user/css/bootstrap.min.css')}}" rel="stylesheet">
 
         <!-- Template Stylesheet -->
-        <link href="{{ asset('assets/css/style.css')}}" rel="stylesheet">
+        <link href="{{ asset('assets/user/css/style.css')}}" rel="stylesheet">
+        <link href="{{ asset('assets/user/css/bootstrap.min.css') }}" rel="stylesheet">
+        {# <link rel="stylesheet" href="{{ asset('build/app.css') }}"> #}
+
+
 
         {% block stylesheets %}
-        {% endblock %}
-
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
+        
         {% endblock %}
     </head>
     <body>
         {% block navbar %}
             {% include 'Layout/partials/header.html.twig' %}
         {% endblock %}
-        {% block body %}{% endblock %}
+        {% block carousel %}
+            {% include 'Layout/partials/carousel.html.twig' %}
+        {% endblock %}
+
+        {% block body %}
+        {# {% block carousel %}
+            {% include 'Layout/partials/header.html.twig' %}
+        {% endblock %} #}
+        
+        {% endblock %}
+        
         {% block footer %}
             {% include 'Layout/partials/footer.html.twig' %}
         {% endblock %}
 
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <!-- Scripts -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="{{ asset('assets/lib/wow/wow.min.js') }}"></script>
-        <script src="{{ asset('assets/lib/easing/easing.min.js') }}"></script>
-        <script src="{{ asset('assets/lib/waypoints/waypoints.min.js') }}"></script>
-        <script src="{{ asset('assets/lib/owlcarousel/owl.carousel.min.js') }}"></script>
+        <script src="{{ asset('assets/user/lib/wow/wow.min.js') }}"></script>
+        <script src="{{ asset('assets/user/lib/easing/easing.min.js') }}"></script>
+        <script src="{{ asset('assets/user/lib/waypoints/waypoints.min.js') }}"></script>
+        <script src="{{ asset('assets/user/lib/owlcarousel/owl.carousel.min.js') }}"></script>
+        <script src="{{ asset('assets/user/js/main.js') }}"></script>
 
-        <!-- Template Javascript -->
-        <script src="{{ asset('assets/js/main.js') }}"></script>
+        {% block javascripts %}
+        {% endblock %}
     </body>
 </html>

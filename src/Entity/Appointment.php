@@ -20,9 +20,6 @@ class Appointment
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $date = null;
 
-    #[ORM\Column(type: Types::TIME_MUTABLE)]
-    private ?\DateTimeInterface $time = null;
-
     #[ORM\Column(length: 255)]
     private ?string $status = null;
 
@@ -32,11 +29,30 @@ class Appointment
     #[ORM\Column]
     private ?\DateTimeImmutable $updated_at = null;
 
+
     public function getId(): ?int
     {
         return $this->id;
     }
+    #[ORM\ManyToOne(targetEntity: User::class)]
+#[ORM\JoinColumn(name: "user_id", referencedColumnName: "id", nullable: false, onDelete: "CASCADE")]
+private ?User $user = null;
 
+    
+    
+    
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+    
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
+    
+        return $this;
+    }
+    
     public function getClient(): ?string
     {
         return $this->client;
@@ -57,18 +73,6 @@ class Appointment
     public function setDate(\DateTimeInterface $date): static
     {
         $this->date = $date;
-
-        return $this;
-    }
-
-    public function getTime(): ?\DateTimeInterface
-    {
-        return $this->time;
-    }
-
-    public function setTime(\DateTimeInterface $time): static
-    {
-        $this->time = $time;
 
         return $this;
     }

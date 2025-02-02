@@ -3,9 +3,10 @@
 
 {% block title %}Log in!{% endblock %}
 {% block navbar %}{% endblock navbar %}
+{% block carousel %}{% endblock carousel %}
 
 {% block body %}
-<div class="login-form">
+<div class="login-form  ">
 <form method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -36,9 +37,10 @@
     </div>
     <br>
 
-    <button class="btn btn-lg btn-primary btn-block" type="submit">
+    <button class="btn btn-primary btn-block" type="submit">
         Sign in
     </button>
+    <a href="{{ path('app_register') }}" class="btn btn-secondary btn-block">Sign up</a>
 </form>
 </div>
 {% endblock %}

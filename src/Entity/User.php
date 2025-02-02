@@ -36,7 +36,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 255)]
     private ?string $firstName = null; // Ajoutez un commentaire ici.
-    
 
     #[ORM\Column(length: 255)]
     private ?string $lastName = null;
@@ -70,7 +69,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return (string) $this->email;
     }
+    #[ORM\Column(length: 20, unique: true)]
+private ?string $cin = null;
 
+    
+    public function getCin(): ?string
+    {
+        return $this->cin;
+    }
+    
+    public function setCin(string $cin): static
+    {
+        $this->cin = $cin;
+    
+        return $this;
+    }
+    
     /**
      * @see UserInterface
      * @return list<string>
@@ -78,7 +92,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getRoles(): array
     {
         $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
+        // Guarantee every user at least has ROLE_USER
         $roles[] = 'ROLE_USER';
 
         return array_unique($roles);
