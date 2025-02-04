@@ -167,6 +167,17 @@ public function appointmentsPartial(AppointmentRepository $appointmentRepository
         'appointments' => $appointments,
     ]);
 }
+#[Route('/client/{id}', name: 'app_appointment_by_client', methods: ['GET'])]
+public function appointmentsByClient(string $id, AppointmentRepository $appointmentRepository): Response
+{
+    // Récupérer tous les rendez-vous du client avec son CIN
+    $appointments = $appointmentRepository->findBy(['user' => $id]);
+
+    return $this->render('appointment/index.html.twig', [
+        'appointments' => $appointments,
+        'layout' => $this->getLayout(),
+    ]);
+}
 
 
 }

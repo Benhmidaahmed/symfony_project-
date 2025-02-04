@@ -169,36 +169,34 @@
         </a>
             </div>
     
-            <div class="recentCustomers">
-                <div class="cardHeader">
-                    <h2>Clients Récents</h2>
-                    {# <a href="#" class="btn">Voir Tout</a> #}
-                </div>
-                <table>
-                    <thead>
-                        <tr>
-                            <td>CIN</td>
-                            <td>Nom</td>
-                            <td>Prénom</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for user in users %}
-                            <tr>
-                                <td>{{ user.cin }}</td>
-                                <td>{{ user.firstName }}</td>
-                                <td>{{ user.lastName }}</td>
-                            </tr>
-                        {% else %}
-                            <tr>
-                                <td colspan="3">Aucun client trouvé</td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        </div>
+<div class="recentCustomers">
+    <div class="cardHeader">
+        <h2>Clients Récents</h2>
     </div>
+    <table>
+        <thead>
+            <tr>
+                <td>CIN</td>
+                <td>Nom</td>
+                <td>Prénom</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr onclick="window.location.href='{{ path('app_appointment_by_client', { id: user.id }) }}'" style="cursor:pointer;">
+                    <td>{{ user.cin }}</td>
+                    <td>{{ user.firstName }}</td>
+                    <td>{{ user.lastName }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">Aucun client trouvé</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
 {% endblock %}
 
 {% block scripts %}
