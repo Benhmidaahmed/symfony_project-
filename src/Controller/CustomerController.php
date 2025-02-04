@@ -15,4 +15,5 @@ class CustomerController extends AbstractController
         $customers = $userRepository->findAll();
         return $this->json($customers);
     }
+    
 }
