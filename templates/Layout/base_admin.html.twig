@@ -37,6 +37,19 @@
     margin-left:400px;
     
 }
+.cardHeader {
+  display: flex;
+  flex-direction: column; /* Permet d'empiler les éléments verticalement */
+  align-items: flex-start; /* Aligne le texte à gauche */
+}
+
+.search {
+  margin-top: 10px; /* Ajoute un espace entre le titre et l'input */
+  width: 100%; /* Ajuste la largeur */
+}
+.serch-outline{
+   margin-top:10px;
+}
 </style>
 
 
@@ -62,5 +75,22 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
+     <script>
+    function filterCustomers() {
+        let input = document.getElementById("searchInput").value.toLowerCase();
+        let rows = document.querySelectorAll(".customerRow");
+
+        rows.forEach(row => {
+            let cin = row.cells[0].textContent.toLowerCase();
+            let nom = row.cells[1].textContent.toLowerCase();
+
+            if (cin.includes(input) || nom.includes(input)) {
+                row.style.display = ""; // Affiche la ligne
+            } else {
+                row.style.display = "none"; // Cache la ligne
+            }
+        });
+    }
+</script>
 </body>
 </html>

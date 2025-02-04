@@ -168,12 +168,17 @@
             <i class="bi bi-plus-circle"></i> Créer un nouveau
         </a>
             </div>
-    
-<div class="recentCustomers">
+ <div class="recentCustomers">
     <div class="cardHeader">
         <h2>Clients Récents</h2>
+        <div class="search">
+            <label>
+                <input type="text" id="searchInput" placeholder="Rechercher par CIN ou Nom..." onkeyup="filterCustomers()">
+                <ion-icon name="search-outline" class="serch-outline"></ion-icon>
+            </label> 
+        </div>
     </div>
-    <table>
+    <table id="customersTable">
         <thead>
             <tr>
                 <td>CIN</td>
@@ -183,7 +188,7 @@
         </thead>
         <tbody>
             {% for user in users %}
-                <tr onclick="window.location.href='{{ path('app_appointment_by_client', { id: user.id }) }}'" style="cursor:pointer;">
+                <tr class="customerRow" onclick="window.location.href='{{ path('app_appointment_by_client', { id: user.id }) }}'" style="cursor:pointer;">
                     <td>{{ user.cin }}</td>
                     <td>{{ user.firstName }}</td>
                     <td>{{ user.lastName }}</td>
@@ -196,6 +201,7 @@
         </tbody>
     </table>
 </div>
+
 
 {% endblock %}
 
@@ -214,4 +220,21 @@
             }
         });
     </script>
+    <script>
+    function filterCustomers() {
+        let input = document.getElementById("searchInput").value.toLowerCase();
+        let rows = document.querySelectorAll(".customerRow");
+
+        rows.forEach(row => {
+            let cin = row.cells[0].textContent.toLowerCase();
+            let nom = row.cells[1].textContent.toLowerCase();
+
+            if (cin.includes(input) || nom.includes(input)) {
+                row.style.display = ""; // Affiche la ligne
+            } else {
+                row.style.display = "none"; // Cache la ligne
+            }
+        });
+    }
+</script>
 {% endblock %}
