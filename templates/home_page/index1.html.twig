@@ -1,13 +1,16 @@
 {% extends 'Layout/base.html.twig' %}
 
-{% block title %}Cabinet d'Audiologie et d'Audioprothèse{% endblock %}
+{% block title %}Cabinet Houji Molka - Centre d'Audiologie à Bizerte | Audiologie Tunisie{% endblock %}
+{% block meta_description %}
+    <meta name="description" content="Cabinet Houji Molka - Centre d'audiologie à Bizerte, Tunisie. Spécialistes en tests auditifs, appareils auditifs sur mesure et solutions auditives. Prenez rendez-vous dès aujourd'hui !">
+{% endblock %}
 {% block navbar %}{% endblock navbar %}
 {% block carousel %}{% endblock carousel %}
 
 {% block body %}
 <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-    <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-        <h2 class="m-0 text-primary"><i class="fa fa-deaf me-3"></i>Solutions Auditives</h2>
+    <a href="#" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+        <h2 class="m-0 text-primary"><i class="fa fa-deaf me-3"></i>Audisens</h2>
     </a>
     <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
@@ -15,34 +18,38 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto p-4 p-lg-0">
             <a href="{{ path('app_home_page') }}" class="nav-item nav-link active">Accueil</a>
-           <a href="{{ path('app_home_page') }}#about" class="nav-item nav-link">À propos</a>
-            <a href="{{ path('app_home_page') }}#services" class="nav-item nav-link">Services</a>
+            <a href="#about" class="nav-item nav-link">À propos</a>
+            <a href="#services" class="nav-item nav-link">Services</a>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                 <div class="dropdown-menu fade-down m-0">
                     <a href="{{ path('app_appointment_new') }}" class="dropdown-item">Prendre Rendez-vous</a>
-                    <a href="{{ path('app_appointment_index') }}" class="dropdown-item">Calendrier</a>
-                    {# <a href="404.html" class="dropdown-item">Page 404</a> #}
+                    <a href="{{ path('app_appointment_index') }}" class="dropdown-item">Votre Liste Rendez-vous</a>
                 </div>
             </div>
-            <a href="{{ path('app_home_page') }}#solutions" class="nav-item nav-link">Solutions</a>
+            <a href="#solustion" class="nav-item nav-link">Solutions</a>
         </div>
         <a href="{{ path('app_logout') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
             Connexion <i class="fa fa-arrow-right ms-3"></i>
         </a>
+        <a href="{{ path('app_logout') }}" class="nav-item nav-link d-lg-none">
+            Connexion<i class="fa fa-arrow-right ms-3"></i>
+        </a>
     </div>
 </nav>
-<div class="container-fluid p-0 mb-5">
+
+<!-- Carousel Start -->
+<div class="container-fluid p-0 mb-5 mb-sm-0">
     <div class="owl-carousel header-carousel position-relative">
         <div class="owl-carousel-item position-relative">
-            <img class="img-fluid" src="{{ asset('assets/user/img/molka.jpg') }}" alt="Cabinet d'Audiologie">
+            <img class="img-fluid" src="{{ asset('assets/user/img/molka.jpg') }}" alt="Cabinet Houji Molka - Centre d'Audiologie à Bizerte">
             <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(24, 29, 56, .7);">
                 <div class="container">
                     <div class="row justify-content-start">
                         <div class="col-sm-10 col-lg-8">
                             <h5 class="text-primary text-uppercase mb-3 animated slideInDown">Votre Audition, Notre Priorité</h5>
-                            <h1 class="display-3 text-white animated slideInDown">Bienvenue au Cabinet d'Audiologie</h1>
-                            <p class="fs-5 text-white mb-4 pb-2">Nous offrons des services complets pour évaluer et améliorer votre audition, avec des solutions personnalisées pour chaque patient.</p>
+                            <h1 class="display-3 text-white animated slideInDown">Cabinet Houji Molka - Centre d'Audiologie à Bizerte</h1>
+                            <p class="fs-5 text-white mb-4 pb-2">Des solutions auditives sur mesure pour améliorer votre qualité de vie.</p>
                             <a href="#services" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Nos Services</a>
                             <a href="{{ path('app_appointment_new') }}" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Prendre Rendez-vous</a>
                         </div>
@@ -51,14 +58,14 @@
             </div>
         </div>
         <div class="owl-carousel-item position-relative">
-            <img class="img-fluid" src="{{ asset('assets/user/img/appareil1.jpg') }}" alt="Appareils Auditifs">
+            <img class="img-fluid" src="{{ asset('assets/user/img/appareil1.jpg') }}" alt="Appareils Auditifs sur Mesure à Bizerte">
             <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(24, 29, 56, .7);">
                 <div class="container">
                     <div class="row justify-content-start">
                         <div class="col-sm-10 col-lg-8">
                             <h5 class="text-primary text-uppercase mb-3 animated slideInDown">Des Solutions Adaptées</h5>
-                            <h1 class="display-3 text-white animated slideInDown">Appareils Auditifs Sur Mesure</h1>
-                            <p class="fs-5 text-white mb-4 pb-2">Découvrez notre gamme d'appareils auditifs et d'implants cochléaires pour retrouver une qualité de vie optimale.</p>
+                            <h1 class="display-3 text-white animated slideInDown">Appareils Auditifs sur Mesure à Bizerte</h1>
+                            <p class="fs-5 text-white mb-4 pb-2">Retrouvez une meilleure qualité de vie avec nos solutions auditives personnalisées.</p>
                             <a href="#services" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">En Savoir Plus</a>
                             <a href="#contact" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Nous Contacter</a>
                         </div>
@@ -69,57 +76,18 @@
     </div>
 </div>
 
-<!-- Carousel Start -->
-{# <div class="container-fluid p-0 mb-5">
-    <div class="owl-carousel header-carousel position-relative">
-        <div class="owl-carousel-item position-relative">
-            <img class="img-fluid" src="{{ asset('assets/user/img/molka.jpg') }}" alt="Cabinet d'Audiologie">
-            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(24, 29, 56, .7);">
-                <div class="container">
-                    <div class="row justify-content-start">
-                        <div class="col-sm-10 col-lg-8">
-                            <h5 class="text-primary text-uppercase mb-3 animated slideInDown">Votre Audition, Notre Priorité</h5>
-                            <h1 class="display-3 text-white animated slideInDown">Bienvenue au Cabinet d'Audiologie</h1>
-                            <p class="fs-5 text-white mb-4 pb-2">Nous offrons des services complets pour évaluer et améliorer votre audition, avec des solutions personnalisées pour chaque patient.</p>
-                            <a href="#services" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Nos Services</a>
-                            <a href="#contact" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Prendre Rendez-vous</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="owl-carousel-item position-relative">
-            <img class="img-fluid" src="{{ asset('assets/user/img/appareil1.jpg') }}" alt="Appareils Auditifs">
-            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(24, 29, 56, .7);">
-                <div class="container">
-                    <div class="row justify-content-start">
-                        <div class="col-sm-10 col-lg-8">
-                            <h5 class="text-primary text-uppercase mb-3 animated slideInDown">Des Solutions Adaptées</h5>
-                            <h1 class="display-3 text-white animated slideInDown">Appareils Auditifs Sur Mesure</h1>
-                            <p class="fs-5 text-white mb-4 pb-2">Découvrez notre gamme d'appareils auditifs et d'implants cochléaires pour retrouver une qualité de vie optimale.</p>
-                            <a href="#services" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">En Savoir Plus</a>
-                            <a href="#contact" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Nous Contacter</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> #}
-
-
-<!-- Service Start -->
+<!-- Services Start -->
 <div class="container-xxl py-5" id="services">
     <div class="container">
         <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
             <h6 class="section-title bg-white text-center text-primary px-3">Nos Services</h6>
-            <h1 class="mb-5">Services d'Audiologie et d'Audioprothèse</h1>
+            <h1 class="mb-5">Services d'Audiologie à Bizerte - Cabinet Houji Molka</h1>
         </div>
         <div class="row g-4">
             <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="service-item text-center pt-3">
                     <div class="p-4">
-                        <i class="fa fa-3x fa-deaf  text-primary mb-4"></i>
+                        <i class="fa fa-3x fa-deaf text-primary mb-4"></i>
                         <h5 class="mb-3">Audiométrie</h5>
                         <p>Évaluation précise de l'audition grâce à des tests tonaux, vocaux et comportementaux.</p>
                     </div>
@@ -155,22 +123,21 @@
         </div>
     </div>
 </div>
-<!-- Service End -->
 
-<!-- About Start -->
+<!-- À Propos Start -->
 <div class="container-xxl py-5" id="about">
     <div class="container">
         <div class="row g-5">
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
                 <div class="position-relative h-100">
-                    <img class="img-fluid position-absolute w-100 h-100" src="{{ asset('assets/user/img/molka1.jpg') }}" alt="À Propos" style="object-fit: cover;">
+                    <img class="img-fluid position-absolute w-100 h-100" src="{{ asset('assets/user/img/molka1.jpg') }}" alt="Cabinet Houji Molka - Centre d'Audiologie à Bizerte" style="object-fit: cover;">
                 </div>
             </div>
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
                 <h6 class="section-title bg-white text-start text-primary pe-3">À Propos</h6>
-                <h1 class="mb-4">Notre Cabinet d'Audiologie</h1>
-                <p class="mb-4">Notre cabinet est spécialisé dans l'évaluation et la correction des troubles de l'audition. Nous proposons des services complets, allant du diagnostic à la prise en charge sur mesure.</p>
-                <p class="mb-4">Notre équipe d'experts utilise des technologies de pointe pour vous offrir des solutions adaptées à vos besoins.</p>
+                <h1 class="mb-4">Cabinet Houji Molka - Centre d'Audiologie à Bizerte</h1>
+                <p class="mb-4">Le Cabinet Houji Molka est un centre d'audiologie spécialisé à Bizerte, Tunisie. Nous proposons des services complets, allant du diagnostic auditif à la correction sur mesure avec des appareils auditifs adaptés.</p>
+                <p class="mb-4">Notre équipe d'experts utilise des technologies de pointe pour vous offrir des solutions auditives personnalisées.</p>
                 <div class="row gy-2 gx-4 mb-4">
                     <div class="col-sm-6">
                         <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Audiométrie Tonale et Vocale</p>
@@ -179,7 +146,7 @@
                         <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Impédancemétrie et Tympanométrie</p>
                     </div>
                     <div class="col-sm-6">
-                        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Appareils Auditifs Sur Mesure</p>
+                        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Appareils Auditifs sur Mesure</p>
                     </div>
                     <div class="col-sm-6">
                         <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Implants Cochléaires et BAHA</p>
@@ -190,21 +157,20 @@
         </div>
     </div>
 </div>
-<!-- About End -->
 
-   <!-- Categories Start -->
+<!-- Solutions Start -->
 <div class="container-xxl py-5 category" id="solustion">
     <div class="container">
         <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
             <h6 class="section-title bg-white text-center text-primary px-3">Nos Solutions</h6>
-            <h1 class="mb-5">Expertise en Audiologie</h1>
+            <h1 class="mb-5">Solutions Auditives à Bizerte - Cabinet Houji Molka</h1>
         </div>
         <div class="row g-3">
             <div class="col-lg-7 col-md-6">
                 <div class="row g-3">
                     <div class="col-lg-12 col-md-12 wow zoomIn" data-wow-delay="0.1s">
                         <a class="position-relative d-block overflow-hidden" href="">
-                            <img class="img-fluid" src="{{ asset('assets/user/img/appareil1.jpg') }}" alt="">
+                            <img class="img-fluid" src="{{ asset('assets/user/img/appareil1.jpg') }}" alt="Appareils Auditifs à Bizerte">
                             <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
                                 <h5 class="m-0">Appareils Auditifs</h5>
                                 <small class="text-primary">Solutions adaptées</small>
@@ -213,7 +179,7 @@
                     </div>
                     <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.3s">
                         <a class="position-relative d-block overflow-hidden" href="">
-                            <img class="img-fluid" src="{{ asset('assets/user/img/appareil.jpg') }}" alt="">
+                            <img class="img-fluid" src="{{ asset('assets/user/img/appareil.jpg') }}" alt="Aides Auditives à Bizerte">
                             <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
                                 <h5 class="m-0">Aides Auditives</h5>
                                 <small class="text-primary">Technologie avancée</small>
@@ -222,7 +188,7 @@
                     </div>
                     <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.5s">
                         <a class="position-relative d-block overflow-hidden" href="">
-                            <img class="img-fluid" src="{{ asset('assets/user/img/appareils.jpg') }}" alt="">
+                            <img class="img-fluid" src="{{ asset('assets/user/img/appareils.jpg') }}" alt="Tests Auditifs à Bizerte">
                             <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
                                 <h5 class="m-0">Tests Auditifs</h5>
                                 <small class="text-primary">Diagnostic précis</small>
@@ -233,7 +199,7 @@
             </div>
             <div class="col-lg-5 col-md-6 wow zoomIn" data-wow-delay="0.7s" style="min-height: 350px;">
                 <a class="position-relative d-block h-100 overflow-hidden" href="">
-                    <img class="img-fluid position-absolute w-100 h-100" src="{{ asset('assets/user/img/outils.jpg') }}" alt="" style="object-fit: cover;">
+                    <img class="img-fluid position-absolute w-100 h-100" src="{{ asset('assets/user/img/outils.jpg') }}" alt="Équipement Audiologique à Bizerte" style="object-fit: cover;">
                     <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin:  1px;">
                         <h5 class="m-0">Équipement Audiologique</h5>
                         <small class="text-primary">Matériel professionnel</small>
@@ -243,44 +209,13 @@
         </div>
     </div>
 </div>
-<!-- Categories End -->
 
-    <!-- Categories Start -->
-   
-<!-- Testimonial Start -->
-<div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
-    <div class="container">
-        <div class="text-center">
-            <h6 class="section-title bg-white text-center text-primary px-3">Témoignages</h6>
-            <h1 class="mb-5">Ce Que Disent Nos Patients</h1>
-        </div>
-        <div class="owl-carousel testimonial-carousel position-relative">
-            <div class="testimonial-item text-center">
-                <img class="border rounded-circle p-2 mx-auto mb-3" src="{{ asset('assets/user/img/team-2.jpg') }}" style="width: 80px; height: 80px;">
-                <h5 class="mb-0">Jean Dupont</h5>
-                <p>Patient</p>
-                <div class="testimonial-text bg-light text-center p-4">
-                    <p class="mb-0">"Grâce au cabinet, j'ai retrouvé une audition optimale. Les appareils sont confortables et parfaitement adaptés."</p>
-                </div>
-            </div>
-            <div class="testimonial-item text-center">
-                <img class="border rounded-circle p-2 mx-auto mb-3" src="{{ asset('assets/user/img/team-3.jpg') }}" style="width: 80px; height: 80px;">
-                <h5 class="mb-0">Marie Leroy</h5>
-                <p>Patient</p>
-                <div class="testimonial-text bg-light text-center p-4">
-                    <p class="mb-0">"Un professionnalisme exceptionnel. Je recommande ce cabinet à tous ceux qui cherchent des solutions auditives."</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Testimonial End -->
-<!-- Début du pied de page -->
+<!-- Footer Start -->
 <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
     <div class="container py-5">
         <div class="row g-5">
             <div class="col-lg-3 col-md-6">
-                <h4 class="text-white mb-3">Liens rapides</h4>
+                <h4 class="text-white mb-3">Cabinet Houji Molka - Centre d'Audiologie Bizerte</h4>
                 <a class="btn btn-link" href="#about">À propos de nous</a>
                 <a class="btn btn-link" href="{{ path('app_appointment_new') }}">Prendre Rendez-vous</a>
                 <a class="btn btn-link" href="#solustion">Solutions</a>
@@ -303,22 +238,22 @@
                 <h4 class="text-white mb-3">Galerie</h4>
                 <div class="row g-2 pt-2">
                     <div class="col-4">
-                        <img class="img-fluid bg-light p-1" src="{{ asset('assets/user/img/appareil1.jpg') }}" alt=""style="height: 50px; object-fit: cover;width:70px;">
+                        <img class="img-fluid bg-light p-1" src="{{ asset('assets/user/img/appareil1.jpg') }}" alt="Appareils Auditifs à Bizerte" style="height: 50px; object-fit: cover;width:70px;">
                     </div>
                     <div class="col-4">
-                        <img class="img-fluid bg-light p-1" src="{{ asset('assets/user/img/molka.jpg') }}" alt=""style="height: 50px; object-fit: cover;width:70px;">
+                        <img class="img-fluid bg-light p-1" src="{{ asset('assets/user/img/molka.jpg') }}" alt="Cabinet Houji Molka - Centre d'Audiologie" style="height: 50px; object-fit: cover;width:70px;">
                     </div>
                     <div class="col-4">
-                        <img class="img-fluid bg-light p-1" src="{{ asset('assets/user/img/appareils.jpg') }}" alt=""style="height: 50px; object-fit: cover;width:70px;">
+                        <img class="img-fluid bg-light p-1" src="{{ asset('assets/user/img/appareils.jpg') }}" alt="Tests Auditifs à Bizerte" style="height: 50px; object-fit: cover;width:70px;">
                     </div>
                     <div class="col-4">
-                        <img class="img-fluid bg-light p-1" src="{{ asset('assets/user/img/cabinet.jpg') }}" alt=""style="height: 50px; object-fit: cover;width:70px;">
+                        <img class="img-fluid bg-light p-1" src="{{ asset('assets/user/img/cabinet.jpg') }}" alt="Cabinet d'Audiologie à Bizerte" style="height: 50px; object-fit: cover;width:70px;">
                     </div>
                     <div class="col-4">
-                        <img class="img-fluid bg-light p-1" src="{{ asset('assets/user/img/locale3.jpg') }}" alt=""style="height: 50px; object-fit: cover;width:70px;">
+                        <img class="img-fluid bg-light p-1" src="{{ asset('assets/user/img/locale3.jpg') }}" alt="Local du Cabinet Houji Molka" style="height: 50px; object-fit: cover;width:70px;">
                     </div>
                     <div class="col-4">
-                        <img class="img-fluid bg-light p-1" src="{{ asset('assets/user/img/ORL.jpg') }}" alt=""style="height: 50px; object-fit: cover;width:70px;">
+                        <img class="img-fluid bg-light p-1" src="{{ asset('assets/user/img/ORL.jpg') }}" alt="ORL à Bizerte" style="height: 50px; object-fit: cover;width:70px;">
                     </div>
                 </div>
             </div>
@@ -336,24 +271,12 @@
         <div class="copyright">
             <div class="row">
                 <div class="text-center text-md-start mb-3 mb-md-0">
-                    &copy; <a class="border-bottom" href="">Solutions Auditives</a>, Tous droits réservés.
-                    {# <br> #}
+                    &copy; <a class="border-bottom" href="">Cabinet Houji Molka</a>, Tous droits réservés.
                     Créé par <a class="border-bottom" href="https://www.linkedin.com/in/ahmed-ben-hmida-091373295/">Benhmida Ahmed</a>
                 </div>
-                {# <div class="col-md-6 text-center text-md-end">
-                    <div class="footer-menu">
-                        <a href="">Accueil</a>
-                        <a href="">Cookies</a>
-                        <a href="">Aide</a>
-                        <a href="">FAQ</a>
-                    </div>
-                </div> #}
             </div>
         </div>
     </div>
 </div>
-<!-- Fin du pied de page -->
-
-
 {% endblock %}
 {% block footer %}{% endblock footer %}

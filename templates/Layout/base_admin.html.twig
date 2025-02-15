@@ -6,7 +6,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="tn5WZbSsSZkhIhkuh_VI7JeY6eernyK3q4oiqBZVvdg" />
     <!-- ======= Styles ====== -->
+    <link href="{{ asset('assets/img/favicon.ico')}}" rel="icon">
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+        <link rel="icon" type="image/x-icon" href="https://www.cabinethoujimolka.tn/favicon.ico">
    
     <link href="{{ asset('assets/admin/css/style.css') }}" rel="stylesheet">
 
@@ -14,29 +19,39 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
-    .table-container {
-        width: 80%;  /* Ajuste la largeur selon ton besoin */
-        margin-left: auto;
-        margin-right: 0;
-        text-align: center;
-    }
+ .table-container {
+    width: 90%;  /* Ajuste la largeur */
+    margin: 0 auto; /* Centre horizontalement */
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
 
-    .table-container table {
-        width: 100%; /* Pour s'assurer que la table prend toute la largeur du conteneur */
+.table-container table {
+    width: 100%; /* La table prend toute la largeur du conteneur */
+}
+
+/* Ajustements pour les petits écrans */
+@media (max-width: 991.98px) {
+    .table-container {
+        width: 100%; /* Prend toute la largeur sur les petits écrans */
     }
+}
+
     .liste {
     text-align: center; /* Centre le texte */
     font-weight: 600; /* Épaisseur du texte */
     color: var(--blue); /* Applique la couleur */
-    margin-left:100px;
+    margin-left:30px;
 }
 .button{
-    margin-left:220px;
+    margin-left:90px;
+    margin-bottom:10px;
 }
-.form-container{
+/* .form-container{
     margin-left:400px;
     
-}
+} */
 .cardHeader {
   display: flex;
   flex-direction: column; /* Permet d'empiler les éléments verticalement */
@@ -49,6 +64,61 @@
 }
 .serch-outline{
    margin-top:10px;
+}
+@media (max-width: 991.98px) {
+       .liste {
+    margin-left:10px;
+}
+.button{
+    margin-left:0;
+    margin-top:10px;
+}
+.form-container{
+    margin-left:20px;
+    
+}
+    /* .table-container {
+    margin-left:60px;
+} */
+}
+.details {
+    display: flex;
+    gap: 20px; /* Espace entre les deux div */
+}
+
+.recentOrders {
+    flex: 2; /* Prend deux fois plus d'espace que recentCustomers */
+    overflow-y: auto; /* Ajoute une barre de défilement si nécessaire */
+    max-height: 600px; /* Hauteur maximale pour recentOrders */
+}
+
+.recentCustomers {
+    flex: 1; /* Prend un espace normal */
+    overflow-y: auto; /* Ajoute une barre de défilement si nécessaire */
+    max-height: 600px; /* Hauteur maximale pour recentCustomers */
+}
+.btn-container {
+    width: 100%; /* Prend toute la largeur de son parent (recentOrders) */
+}
+
+.btn-container .btn {
+    width: 100%; /* Le bouton prend toute la largeur de son conteneur */
+    text-align: center; /* Centrer le texte du bouton */
+    padding: 10px; /* Ajouter un peu de padding pour un meilleur rendu */
+    box-sizing: border-box; /* Inclure le padding dans la largeur totale */
+}
+
+@media screen and (max-width: 768px) {
+    .details {
+        flex-direction: column; /* Affiche les éléments en colonne */
+    }
+
+    .recentOrders,
+    .recentCustomers {
+        flex: none; /* Supprime la flexibilité */
+        width: 100%; /* Prend toute la largeur */
+        max-height: none; /* Supprime la hauteur max pour s'adapter au contenu */
+    }
 }
 </style>
 

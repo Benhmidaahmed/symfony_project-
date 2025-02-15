@@ -7,15 +7,18 @@
 {% endblock %}
 
 {% block body %}
+{% block dachbord %}
+           
+        {% endblock %}
     <!-- =============== Navigation ================ -->
     <div class="navigation">
         <ul>
             <li>
                 <a href="#">
                     <span class="icon">
-                        <i class="fa fa-deaf me-3"></i>
+                        <h3 class="m-3"><i class="fa fa-deaf me-3"></i>Audisens</h3>
                     </span>
-                    <span class="title">Solutions Auditives</span>
+                   
                 </a>
             </li>
             <li>
@@ -36,6 +39,14 @@
                     <span class="title">Liste des Rendez-vous</span>
                 </a>
             </li>
+              <li>
+            <a href="{{ path('app_appointment_today') }}">
+                <span class="icon">
+                    <ion-icon name="today-outline"></ion-icon> <!-- Icône pour "Aujourd'hui" -->
+                </span>
+                <span class="title">Rendez-vous du Jour</span>
+            </a>
+        </li>
 
             <li>
                 <a href="{{ path('app_appointment_new') }}" id="appointments">
@@ -56,6 +67,7 @@
             </li>
         </ul>
     </div>
+    
 
     <!-- ========================= Main ==================== -->
     <div class="main">
@@ -82,7 +94,7 @@
                     <div class="cardName">Rendez-vous</div>
                 </div>
                 <div class="iconBx">
-                    <ion-icon name="chatbubble-outline"></ion-icon>
+                    <ion-icon name="calendar-outline"></ion-icon>
                 </div>
             </div>
             <div class="card">
@@ -94,112 +106,119 @@
                     <ion-icon name="people-outline"></ion-icon>
                 </div>
             </div>
-            <div class="card">
-                <div>
-                    <div class="numbers">284</div>
-                    <div class="cardName">Commentaires</div>
-                </div>
-                <div class="iconBx">
-                    <ion-icon name="chatbubbles-outline"></ion-icon>
-                </div>
-            </div>
-            <div class="card">
-                <div>
-                    <div class="numbers">$7,842</div>
-                    <div class="cardName">Revenus</div>
-                </div>
-                <div class="iconBx">
-                    <ion-icon name="cash-outline"></ion-icon>
-                </div>
-            </div>
+     <div class="card">
+    <div>
+        <div class="numbers">{{ pendingAppointments }}</div>
+        <div class="cardName">Rendez-vous En attente</div>
+    </div>
+    <div class="iconBx">
+        <ion-icon name="chatbubbles-outline"></ion-icon>
+    </div>
+</div>
+
+<div class="card">
+    <div>
+        <div class="numbers">{{ todayAppointments }}</div>
+        <div class="cardName">Rendez-vous Du jour</div>
+    </div>
+    <div class="iconBx">
+        
+        <ion-icon name="today-outline"></ion-icon>
+    </div>
+</div>
+
+
         </div>
 
         <!-- ================ Détails des Commandes ================= -->
         <div class="details">
-            <div class="recentOrders">
-                <div class="cardHeader">
-                    <h2>Rendez-vous Récents</h2>
-                    <a href="{{ path('app_appointment_index') }}" class="btn">Voir Tout</a>
-                </div>
-                <table>
-                    <thead>
+    <div class="recentOrders">
+        <div class="cardHeader">
+           <h2>Rendez-vous en attente</h2>
+            {# <a href="{{ path('app_appointment_index') }}" class="btn">Voir Tout</a>  #}
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <td>NUM TEL</td>
+                    <td>Client</td>
+                    <td>Date</td>
+                    <td>Actions</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for appointment in appointments %}
+                    {% if appointment.adminComment is null %}
                         <tr>
-                            <td>CIN</td>
-                            <td>Client</td>
-                            <td>Date</td>
-                            <td>Actions</td>
+                            <td>
+                                {% if appointment.user %}
+                                    {{ appointment.client }}
+                                {% else %}
+                                    Aucun utilisateur assigné
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if appointment.user %}
+                                    {{ appointment.user.firstName }} {{ appointment.user.lastName }}
+                                {% else %}
+                                    Aucun utilisateur assigné
+                                {% endif %}
+                            </td>
+                            <td>{{ appointment.date ? appointment.date|date('Y-m-d H:i:s') : '' }}</td>
+                            <td>
+                                <a href="{{ path('app_appointment_show', {'id': appointment.id}) }}" class="btn btn-link">
+                                    <i class="bi bi-eye"></i> <!-- Icône "Voir" -->
+                                </a>
+                                <a href="{{ path('app_appointment_edit', {'id': appointment.id}) }}" class="btn btn-link">
+                                    <i class="bi bi-pencil"></i> <!-- Icône "Modifier" -->
+                                </a>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        {% for appointment in appointments %}
-                            <tr>
-                                <td>
-                                    {% if appointment.user %}
-                                        {{ appointment.user.cin }}
-                                    {% else %}
-                                        Aucun utilisateur assigné
-                                    {% endif %}
-                                </td>
-                                <td>
-                                    {% if appointment.user %}
-                                        {{ appointment.user.firstName }} {{ appointment.user.lastName }}
-                                    {% else %}
-                                        Aucun utilisateur assigné
-                                    {% endif %}
-                                </td>
-                                <td>{{ appointment.date ? appointment.date|date('Y-m-d H:i:s') : '' }}</td>
-                                <td>
-                            <a href="{{ path('app_appointment_show', {'id': appointment.id}) }}" class="btn btn-link">
-                                <i class="bi bi-eye"></i> <!-- Icône "Voir" -->
-                            </a>
-                            <a href="{{ path('app_appointment_edit', {'id': appointment.id}) }}" class="btn btn-link">
-                                <i class="bi bi-pencil"></i> <!-- Icône "Modifier" -->
-                            </a>
-                        </td>
-                            </tr>
-                        {% else %}
-                            <tr>
-                                <td colspan="4">Aucun enregistrement trouvé</td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-               <a href="{{ path('app_appointment_new') }}" class="btn btn-primary">
-            <i class="bi bi-plus-circle"></i> Créer un nouveau
-        </a>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+        <!-- Bouton bien positionné en bas -->
+        <div class="btn-container">
+    <a href="{{ path('app_appointment_new') }}" class="btn btn-primary">
+        <i class="bi bi-plus-circle"></i> Créer un nouveau
+    </a>
+</div>
+    </div>
+
+    <div class="recentCustomers">
+        <div class="">
+            <h2>Liste des Clients </h2>
+            <div class="search">
+                <label>
+                    <input type="text" id="searchInput" placeholder="Rechercher par NUM TEL ou Nom..." onkeyup="filterCustomers()">
+                    <ion-icon name="search-outline" class="serch-outline"></ion-icon>
+                </label>
             </div>
- <div class="recentCustomers">
-    <div class="cardHeader">
-        <h2>Clients Récents</h2>
-        <div class="search">
-            <label>
-                <input type="text" id="searchInput" placeholder="Rechercher par CIN ou Nom..." onkeyup="filterCustomers()">
-                <ion-icon name="search-outline" class="serch-outline"></ion-icon>
-            </label> 
+            <table id="customersTable">
+                <thead>
+                    <tr>
+                        <td>NUM TEL</td>
+                        <td>Nom</td>
+                        <td>Prénom</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                        <tr class="customerRow" onclick="window.location.href='{{ path('app_appointment_by_client', { id: user.id }) }}'" style="cursor:pointer;">
+                            <td>{{ user.cin }}</td>
+                            <td>{{ user.firstName }}</td>
+                            <td>{{ user.lastName }}</td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="3">Aucun client trouvé</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
-    <table id="customersTable">
-        <thead>
-            <tr>
-                <td>CIN</td>
-                <td>Nom</td>
-                <td>Prénom</td>
-            </tr>
-        </thead>
-        <tbody>
-            {% for user in users %}
-                <tr class="customerRow" onclick="window.location.href='{{ path('app_appointment_by_client', { id: user.id }) }}'" style="cursor:pointer;">
-                    <td>{{ user.cin }}</td>
-                    <td>{{ user.firstName }}</td>
-                    <td>{{ user.lastName }}</td>
-                </tr>
-            {% else %}
-                <tr>
-                    <td colspan="3">Aucun client trouvé</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
 </div>
 
 

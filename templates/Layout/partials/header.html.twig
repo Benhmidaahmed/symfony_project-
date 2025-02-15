@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-    <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-        <h2 class="m-0 text-primary"><i class="fa fa-deaf me-3"></i>Solutions Auditives</h2>
+    <a href="#" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+        <h2 class="m-0 text-primary"><i class="fa fa-deaf me-3"></i>Audisens  </h2>
     </a>
     <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
@@ -20,8 +20,14 @@
             </div>
             <a href="{{ path('app_home_page') }}#solutions" class="nav-item nav-link">Solutions</a>
         </div>
-        <a href="{{ path('app_logout') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
-            Déconnexion <i class="fa fa-arrow-right ms-3"></i>
-        </a>
+      <a href="{{ path('app_logout') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
+    Déconnexion <i class="fa fa-arrow-right ms-3"></i>
+</a>
+
+<!-- Version lien dans le menu pour mobile -->
+<a href="{{ path('app_logout') }}" class="nav-item nav-link d-lg-none">
+    Déconnexion<i class="fa fa-arrow-right ms-3"></i>
+</a>
+
     </div>
 </nav>
