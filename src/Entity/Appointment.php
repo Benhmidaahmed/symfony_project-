@@ -38,6 +38,19 @@ class Appointment
 #[ORM\JoinColumn(name: "user_id", referencedColumnName: "id", nullable: false, onDelete: "CASCADE")]
 private ?User $user = null;
 
+#[ORM\Column(type: Types::TEXT, nullable: true)]
+private ?string $adminComment = null; // Nouveau champ
+
+public function getAdminComment(): ?string
+{
+    return $this->adminComment;
+}
+
+public function setAdminComment(?string $adminComment): self
+{
+    $this->adminComment = $adminComment;
+    return $this;
+}
     
     
     
