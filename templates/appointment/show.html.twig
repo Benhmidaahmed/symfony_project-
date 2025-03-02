@@ -29,7 +29,7 @@
                             <td>{{ appointment.date ? appointment.date|date('Y-m-d H:i:s') : '-' }}</td>
                         </tr>
                         <tr>
-                            <th scope="row">Status</th>
+                            <th scope="row">Service</th>
                             <td>{{ appointment.status }}</td>
                         </tr>
                         <tr>
@@ -37,7 +37,7 @@
                             <td>{{ appointment.createdAt ? appointment.createdAt|date('Y-m-d H:i:s') : '-' }}</td>
                         </tr>
                         <tr>
-                            <th scope="row">Mis à jour le</th>
+                            <th scope="row">Modifié le</th>
                             <td>{{ appointment.updatedAt ? appointment.updatedAt|date('Y-m-d H:i:s') : '-' }}</td>
                         </tr>
                     </tbody>
@@ -46,7 +46,11 @@
         </div>
     </div>
 
-    <div class="d-flex justify-content-between align-items-center mt-4">
+   
+
+</div>
+<div class="container mt-4" id="show">
+ <div class="d-flex justify-content-between align-items-center mt-4">
         <a href="{{ path('app_appointment_index') }}#liste" class="btn btn-secondary ">
             <i class="fas fa-arrow-left"></i> Retour à la liste
         </a>
@@ -56,8 +60,6 @@
             </a>
             {{ include('appointment/_delete_form.html.twig', { 'class': 'btn btn-danger ' }) }}
         </div>
-    </div>
-
-</div>
+    </div> </div>
 </div>
 {% endblock %}

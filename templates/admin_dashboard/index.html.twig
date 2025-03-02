@@ -152,7 +152,7 @@
                         <tr>
                             <td>
                                 {% if appointment.user %}
-                                    {{ appointment.client }}
+                                    {{ appointment.user.cin }}
                                 {% else %}
                                     Aucun utilisateur assigné
                                 {% endif %}
