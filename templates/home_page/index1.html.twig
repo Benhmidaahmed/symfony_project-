@@ -8,6 +8,13 @@
 {% block carousel %}{% endblock carousel %}
 
 {% block body %}
+<!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
 <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
     <a href="#" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
         <h2 class="m-0 text-primary"><i class="fa fa-deaf me-3"></i>Audisens</h2>
@@ -17,7 +24,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto p-4 p-lg-0">
-            <a href="{{ path('app_home_page') }}" class="nav-item nav-link active">Accueil</a>
+            <a href="https://www.cabinethoujimolka.tn/" class="nav-item nav-link active">Accueil</a>
             <a href="#about" class="nav-item nav-link">À propos</a>
             <a href="#services" class="nav-item nav-link">Services</a>
             <div class="nav-item dropdown">
@@ -219,7 +226,7 @@
                 <a class="btn btn-link" href="#about">À propos de nous</a>
                 <a class="btn btn-link" href="{{ path('app_appointment_new') }}">Prendre Rendez-vous</a>
                 <a class="btn btn-link" href="#solustion">Solutions</a>
-                <a class="btn btn-link" href="{{ path('app_appointment_index') }}">Calendrier</a>
+                <a class="btn btn-link" href="{{ path('app_appointment_index') }}">Liste des Rendez-vous</a>
                 <a class="btn btn-link" href="#services">Services</a>
             </div>
             <div class="col-lg-3 col-md-6">
@@ -272,7 +279,7 @@
             <div class="row">
                 <div class="text-center text-md-start mb-3 mb-md-0">
                     &copy; <a class="border-bottom" href="">Cabinet Houji Molka</a>, Tous droits réservés.
-                    Créé par <a class="border-bottom" href="https://www.linkedin.com/in/ahmed-ben-hmida-091373295/">Benhmida Ahmed</a>
+                    Créé par <a class="border-bottom" href="https://www.linkedin.com/in/ahmed-ben-hmida-091373295/">Ben Hmida Ahmed</a>
                 </div>
             </div>
         </div>
