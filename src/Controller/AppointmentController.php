@@ -39,41 +39,93 @@ final class AppointmentController extends AbstractController
         ]);
     }
 
+    // #[Route('/new', name: 'app_appointment_new', methods: ['GET', 'POST'])]
+    // public function new(Request $request, EntityManagerInterface $entityManager): Response
+    // {
+    //     $user = $this->getUser();  // Récupérer l'utilisateur connecté
+    //     if (!$user) {
+    //         $this->addFlash('error', 'Vous devez être connecté pour prendre un rendez-vous.');
+    //         return $this->redirectToRoute('app_login');
+    //     }
+
+    //     $appointment = new Appointment();
+
+    //     // Si l'utilisateur est un admin, on ne définit pas l'utilisateur ici, il sera choisi dans le formulaire
+    //     if (!$this->isGranted('ROLE_ADMIN')) {
+    //         $appointment->setUser($user);  // Assigner l'utilisateur connecté au rendez-vous
+    //     }
+
+    //     $form = $this->createForm(AppointmentType::class, $appointment, [
+    //         'is_admin' => $this->isGranted('ROLE_ADMIN'), // Passer une option pour savoir si l'utilisateur est admin
+    //     ]);
+    //     $form->handleRequest($request);
+
+    //     if ($form->isSubmitted() && $form->isValid()) {
+    //         $entityManager->persist($appointment);
+    //         $entityManager->flush();
+
+    //         return $this->redirectToRoute('app_appointment_index', [], Response::HTTP_SEE_OTHER);
+    //     }
+
+    //     return $this->render('appointment/new.html.twig', [
+    //         'appointment' => $appointment,
+    //         'form' => $form,
+    //         'layout' => $this->getLayout(),
+    //     ]);
+    // }
     #[Route('/new', name: 'app_appointment_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $user = $this->getUser();  // Récupérer l'utilisateur connecté
+        $user = $this->getUser();
         if (!$user) {
             $this->addFlash('error', 'Vous devez être connecté pour prendre un rendez-vous.');
             return $this->redirectToRoute('app_login');
         }
-
+    
         $appointment = new Appointment();
-
-        // Si l'utilisateur est un admin, on ne définit pas l'utilisateur ici, il sera choisi dans le formulaire
+    
         if (!$this->isGranted('ROLE_ADMIN')) {
-            $appointment->setUser($user);  // Assigner l'utilisateur connecté au rendez-vous
+            $appointment->setUser($user);
         }
-
+    
         $form = $this->createForm(AppointmentType::class, $appointment, [
-            'is_admin' => $this->isGranted('ROLE_ADMIN'), // Passer une option pour savoir si l'utilisateur est admin
+            'is_admin' => $this->isGranted('ROLE_ADMIN'),
         ]);
         $form->handleRequest($request);
-
+    
         if ($form->isSubmitted() && $form->isValid()) {
+            $appointmentDate = $appointment->getDate(); // Récupérer la date du rendez-vous
+            
+            // Vérifier si la date est passée
+            if ($appointmentDate < new \DateTime()) {
+                $this->addFlash('error', 'Vous ne pouvez pas prendre un rendez-vous dans le passé.');
+                return $this->redirectToRoute('app_appointment_new');
+            }
+    
+            // Vérifier les horaires de travail (exemple : 08:00 - 18:00)
+            $openingHour = 8;
+            $closingHour = 18;
+            $appointmentHour = (int) $appointmentDate->format('H');
+    
+            if ($appointmentHour < $openingHour || $appointmentHour >= $closingHour) {
+                $this->addFlash('error', 'Les rendez-vous sont autorisés uniquement entre 08:00 et 18:00.');
+                return $this->redirectToRoute('app_appointment_new');
+            }
+    
             $entityManager->persist($appointment);
             $entityManager->flush();
-
+    
+            $this->addFlash('success', 'Votre rendez-vous a été enregistré avec succès.');
             return $this->redirectToRoute('app_appointment_index', [], Response::HTTP_SEE_OTHER);
         }
-
+    
         return $this->render('appointment/new.html.twig', [
             'appointment' => $appointment,
             'form' => $form,
             'layout' => $this->getLayout(),
         ]);
     }
-
+    
     // Les autres méthodes (show, edit, delete, etc.) restent inchangées
 
 
@@ -87,7 +139,54 @@ final class AppointmentController extends AbstractController
     }
 
 
-    #[Route('/{id}/edit', name: 'app_appointment_edit', methods: ['GET', 'POST'])]
+//     #[Route('/{id}/edit', name: 'app_appointment_edit', methods: ['GET', 'POST'])]
+// public function edit(Request $request, Appointment $appointment, EntityManagerInterface $entityManager): Response
+// {
+//     $form = $this->createForm(AppointmentType::class, $appointment, [
+//         'is_admin' => $this->isGranted('ROLE_ADMIN'),
+//     ]);
+//     $form->handleRequest($request);
+
+//     if ($form->isSubmitted() && $form->isValid()) {
+//         $entityManager->flush();
+
+//         return $this->redirectToRoute('app_appointment_index', [], Response::HTTP_SEE_OTHER);
+//     }
+
+//     return $this->render('appointment/edit.html.twig', [
+//         'appointment' => $appointment,
+//         'form' => $form,
+//         'layout' => $this->getLayout(),
+//     ]);
+// }
+//////
+// #[Route('/{id}/edit', name: 'app_appointment_edit', methods: ['GET', 'POST'])]
+// public function edit(Request $request, Appointment $appointment, EntityManagerInterface $entityManager): Response
+// {
+//     $form = $this->createForm(AppointmentType::class, $appointment, [
+//         'is_admin' => $this->isGranted('ROLE_ADMIN'),
+//     ]);
+//     $form->handleRequest($request);
+
+//     if ($form->isSubmitted() && $form->isValid()) {
+//         if (!$this->isGranted('ROLE_ADMIN')) {
+//             $appointment->setAdminComment(null); // Supprimer le commentaire admin
+//             // $appointment->setStatus('pending'); // Mettre en attente
+//         }
+
+//         $entityManager->flush();
+
+//         return $this->redirectToRoute('app_appointment_index', [], Response::HTTP_SEE_OTHER);
+//     }
+
+//     return $this->render('appointment/edit.html.twig', [
+//         'appointment' => $appointment,
+//         'form' => $form,
+//         'layout' => $this->getLayout(),
+//     ]);
+// }
+
+#[Route('/{id}/edit', name: 'app_appointment_edit', methods: ['GET', 'POST'])]
 public function edit(Request $request, Appointment $appointment, EntityManagerInterface $entityManager): Response
 {
     $form = $this->createForm(AppointmentType::class, $appointment, [
@@ -96,8 +195,32 @@ public function edit(Request $request, Appointment $appointment, EntityManagerIn
     $form->handleRequest($request);
 
     if ($form->isSubmitted() && $form->isValid()) {
+        $appointmentDate = $appointment->getDate(); // Récupérer la date du rendez-vous
+
+        // Vérifier si la nouvelle date est passée
+        if ($appointmentDate < new \DateTime()) {
+            $this->addFlash('error', 'Vous ne pouvez pas modifier un rendez-vous vers une date passée.');
+            return $this->redirectToRoute('app_appointment_edit', ['id' => $appointment->getId()]);
+        }
+
+        // Vérifier les horaires de travail (08:00 - 18:00)
+        $openingHour = 8;
+        $closingHour = 18;
+        $appointmentHour = (int) $appointmentDate->format('H');
+
+        if ($appointmentHour < $openingHour || $appointmentHour >= $closingHour) {
+            $this->addFlash('error', 'Les rendez-vous sont autorisés uniquement entre 08:00 et 18:00.');
+            return $this->redirectToRoute('app_appointment_edit', ['id' => $appointment->getId()]);
+        }
+
+        // Si l'utilisateur est un simple utilisateur (pas admin), reset le commentaire admin
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            $appointment->setAdminComment(null);
+        }
+
         $entityManager->flush();
 
+        $this->addFlash('success', 'Le rendez-vous a été mis à jour avec succès.');
         return $this->redirectToRoute('app_appointment_index', [], Response::HTTP_SEE_OTHER);
     }
 
@@ -109,16 +232,26 @@ public function edit(Request $request, Appointment $appointment, EntityManagerIn
 }
 
 
-    #[Route('/{id}', name: 'app_appointment_delete', methods: ['POST'])]
-    public function delete(Request $request, Appointment $appointment, EntityManagerInterface $entityManager): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$appointment->getId(), $request->get('_token'))) {
-            $entityManager->remove($appointment);
-            $entityManager->flush();
-        }
+#[Route('/{id}', name: 'app_appointment_delete', methods: ['POST'])]
+public function delete(Request $request, Appointment $appointment, EntityManagerInterface $entityManager): Response
+{
+    $appointmentDate = $appointment->getDate(); // Récupérer la date du rendez-vous
 
-        return $this->redirectToRoute('app_appointment_index', [], Response::HTTP_SEE_OTHER);
+    // Vérifier si la date du rendez-vous est dans le passé
+    if ($appointmentDate < new \DateTime()) {
+        $this->addFlash('error', 'Vous ne pouvez pas supprimer un rendez-vous passé.');
+        return $this->redirectToRoute('app_appointment_index');
     }
+
+    if ($this->isCsrfTokenValid('delete'.$appointment->getId(), $request->get('_token'))) {
+        $entityManager->remove($appointment);
+        $entityManager->flush();
+        $this->addFlash('success', 'Le rendez-vous a été supprimé avec succès.');
+    }
+
+    return $this->redirectToRoute('app_appointment_index', [], Response::HTTP_SEE_OTHER);
+}
+
   
     #[Route('/appointments-data', name: 'app_appointment_data', methods: ['GET'])]
 

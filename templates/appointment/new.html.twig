@@ -2,6 +2,18 @@
 
 {% block body %}
 <div class="container">
+   {% for label, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="flash-message flash-{{ label }}" style="background: {% if label == 'error' %}rgba(255, 0, 0, 0.2){% else %}rgba(0, 255, 0, 0.2){% endif %}; 
+                     text-align: center; 
+                     padding: 15px; 
+                     margin: 10px 0; 
+                     border-radius: 5px;
+                     border-left: 5px solid {% if label == 'error' %}#ff0000{% else %}#00aa00{% endif %};">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
     {# <h1>Prendre votre Rendez-vous</h1> #}
 
     {{ include('appointment/_form.html.twig') }}
